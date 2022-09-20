@@ -20,30 +20,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth', 'level:admin']], function () {
-    Route::get('admin', function () {
-        return 'Ini halaman Admin';
-    });
+    Route::get('/index/admin', [HomeController::class, 'index_admin']);
 });
-
 
 Route::group(['middleware' => ['auth', 'level:user']], function () {
-    Route::get('user', function () {
-        return 'Ini halaman User';
-    });
+    Route::get('/index/user', [HomeController::class, 'index_user']);
 });
-
-Route::group(['middleware' => ['auth', 'level:siswa']], function () {
-    Route::get('siswa', function () {
-        return 'Ini halaman Siswa';
-    });
-});
-
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('/login_lte', [App\Http\Controllers\HomeController::class, 'login_lte'])->name('home');

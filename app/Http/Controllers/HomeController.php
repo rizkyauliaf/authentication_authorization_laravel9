@@ -32,4 +32,13 @@ class HomeController extends Controller
     {
         return view('login_lte');
     }
+    public function index_admin()
+    {
+        return 'Halaman Index Admin';
+    }
+
+    public function index_user()
+    {
+        return 'Halaman Index User';
+    }
 }

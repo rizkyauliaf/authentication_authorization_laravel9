@@ -15,6 +15,7 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                    @if(Auth::user()->level_as=="admin")
                     <table class="table table-responsive">
                         <tr>
                             <th>Username</th>
@@ -37,6 +38,9 @@
                             <td>{{ $user->created_at}}</td>
                         </tr>
                     </table>
+                    @else
+                    <h1>Halaman Index User</h1>
+                    @endif
                 </div>
             </div>
         </div>
